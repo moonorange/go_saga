@@ -30,6 +30,6 @@ spec:
             - name: PORT
               value: "{{ .Values.service.port }}"
             - name: QUERY_SERVICE_HOST
-              value: "{{ .Values.container.dns.query }}.default.svc.cluster.local:{{ .Values.service.queryPort }}"
+              value: "{{ .Values.container.dns.payment }}.default.svc.cluster.local:{{ .Values.service.paymentPort }}"
             - name: COMMAND_SERVICE_HOST
-              value: "{{ .Values.container.dns.command }}.default.svc.cluster.local:{{ .Values.service.commandPort }}"
+              value: "{{ .Values.container.dns.order }}.default.svc.cluster.local:{{ .Values.service.orderPort }}"

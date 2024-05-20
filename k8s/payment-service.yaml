@@ -1,4 +1,4 @@
-name: query-service
+name: payment-service
 replicaCount: 1
 container:
   image:
@@ -6,11 +6,11 @@ container:
     tag: order_service
     pullPolicy: Always
   dns:
-    query: query-service
-    command: command-service
+    payment: payment-service
+    order: order-service
 
 service:
   type: ClusterIP
   port: 8081
-  queryPort: 8081
-  commandPort: 8082
+  paymentPort: 8081
+  orderPort: 8082

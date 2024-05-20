@@ -25,13 +25,13 @@ minikube:
 # Need to start minikube before deploying services
 helm_install:
 	helm install -f k8s/bff.yaml bff ./k8s/microservice
-	helm install -f k8s/query-service.yaml query-service ./k8s/microservice
-	helm install -f k8s/command-service.yaml command-service ./k8s/microservice
+	helm install -f k8s/payment-service.yaml payment-service ./k8s/microservice
+	helm install -f k8s/order-service.yaml order-service ./k8s/microservice
 
 helm_uninstall:
 	helm uninstall bff
-	helm uninstall query-service
-	helm uninstall command-service
+	helm uninstall payment-service
+	helm uninstall order-service
 
 helm_update: helm_uninstall helm_install
 

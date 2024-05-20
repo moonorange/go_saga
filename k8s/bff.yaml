@@ -6,11 +6,11 @@ container:
     tag: bff
     pullPolicy: Always
   dns:
-    query: query-service
-    command: command-service
+    query: payment-service
+    command: order-service
 
 service:
   type: NodePort
   port: 8080
-  queryPort: 8081
-  commandPort: 8082
+  paymentPort: 8081
+  orderPort: 8082
