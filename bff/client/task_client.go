@@ -15,9 +15,9 @@ var (
 )
 
 func NewQueryServiceClient() genconnect.TaskServiceClient {
-	queryHost := os.Getenv("INVENTORY_SERVICE_HOST")
-	logrus.Info("queryHost: ", queryHost)
-	if queryHost == "" {
+	inventoryHost := os.Getenv("INVENTORY_SERVICE_HOST")
+	logrus.Info("inventoryHost: ", inventoryHost)
+	if inventoryHost == "" {
 		logrus.Fatal("empty INVENTORY_SERVICE_HOST")
 	}
 	// Set up a connection to the server.
@@ -27,7 +27,7 @@ func NewQueryServiceClient() genconnect.TaskServiceClient {
 	}
 	queryClient = genconnect.NewTaskServiceClient(
 		http.DefaultClient,
-		"http://"+queryHost,
+		"http://"+inventoryHost,
 		connect.WithGRPC(),
 	)
 
