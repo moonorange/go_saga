@@ -35,9 +35,9 @@ func NewQueryServiceClient() genconnect.TaskServiceClient {
 }
 
 func NewCommandServiceClient() genconnect.TaskServiceClient {
-	commandHost := os.Getenv("PAYMENT_SERVICE_HOST")
-	logrus.Info("commandHost: ", commandHost)
-	if commandHost == "" {
+	paymentHost := os.Getenv("PAYMENT_SERVICE_HOST")
+	logrus.Info("paymentHost: ", paymentHost)
+	if paymentHost == "" {
 		logrus.Fatal("empty PAYMENT_SERVICE_HOST")
 	}
 	if commandClient != nil {
@@ -47,7 +47,7 @@ func NewCommandServiceClient() genconnect.TaskServiceClient {
 	// Create a gRPC client using the connect.WithGRPC() option
 	commandClient = genconnect.NewTaskServiceClient(
 		http.DefaultClient,
-		"http://"+commandHost,
+		"http://"+paymentHost,
 		connect.WithGRPC(),
 	)
 
