@@ -3,11 +3,11 @@ replicaCount: 1
 container:
   image:
     repository: keigokida/gomicroservices
-    tag: order_service
+    tag: inventory_service
     pullPolicy: Always
   dns:
     payment: payment-service
-    order: order-service
+    inventory: inventory-service
 
 service:
   type: ClusterIP

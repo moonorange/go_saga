@@ -7,8 +7,8 @@ import (
 	"strconv"
 
 	"connectrpc.com/connect"
-	"github.com/moonorange/gomicroservice/order_service/configs"
-	"github.com/moonorange/gomicroservice/order_service/infra/mysql"
+	"github.com/moonorange/gomicroservice/inventory_service/configs"
+	"github.com/moonorange/gomicroservice/inventory_service/infra/mysql"
 	"github.com/moonorange/gomicroservice/protogo/gen"
 	"github.com/moonorange/gomicroservice/protogo/gen/genconnect"
 	"github.com/sirupsen/logrus"
@@ -44,7 +44,7 @@ func main() {
 	if port == "" {
 		port = defaultPort
 	}
-	host := os.Getenv("QUERY_SERVICE_HOST")
+	host := os.Getenv("INVENTORY_SERVICE_HOST")
 	if host == "" {
 		host = defaultHost
 	}

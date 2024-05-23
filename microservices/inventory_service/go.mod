@@ -1,4 +1,4 @@
-module github.com/moonorange/gomicroservice/order_service
+module github.com/moonorange/gomicroservice/inventory_service
 
 go 1.22.2
 

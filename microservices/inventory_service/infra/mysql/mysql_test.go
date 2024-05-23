@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/DATA-DOG/go-txdb"
-	"github.com/moonorange/gomicroservice/order_service/configs"
-	"github.com/moonorange/gomicroservice/order_service/infra/mysql"
+	"github.com/moonorange/gomicroservice/inventory_service/configs"
+	"github.com/moonorange/gomicroservice/inventory_service/infra/mysql"
 )
 
 // Ensure the test database can open & close.

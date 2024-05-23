@@ -7,7 +7,7 @@ container:
     pullPolicy: Always
   dns:
     query: payment-service
-    command: order-service
+    command: inventory-service
 
 service:
   type: NodePort

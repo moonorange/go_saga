@@ -14,7 +14,7 @@ RUN go mod download
 COPY . .
 
 # Build the application's binary
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o order_service ./cmd/server
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o inventory_service ./cmd/server
 
 # Start a new stage from scratch for multi-stage builds.
 # This is to reduce the finale docker image size and to isolate build dependencies
@@ -24,10 +24,10 @@ FROM alpine:latest
 WORKDIR /app
 
 # Copy the compiled binary from the previous stage
-COPY --from=builder /app/order_service .
+COPY --from=builder /app/inventory_service .
 
 # Expose the port on which the server will run
 EXPOSE 8081
 
 # Command to run the application when starting the container
-CMD ["./order_service"] 
+CMD ["./inventory_service"] 

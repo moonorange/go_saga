@@ -1,4 +1,4 @@
-name: order-service
+name: inventory-service
 replicaCount: 1
 container:
   image:
@@ -7,7 +7,7 @@ container:
     pullPolicy: Always
   dns:
     payment: payment-service
-    order: order-service
+    inventory: inventory-service
 
 service:
   type: ClusterIP

@@ -29,7 +29,7 @@ spec:
           env:
             - name: PORT
               value: "{{ .Values.service.port }}"
-            - name: QUERY_SERVICE_HOST
+            - name: INVENTORY_SERVICE_HOST
               value: "{{ .Values.container.dns.payment }}.default.svc.cluster.local:{{ .Values.service.paymentPort }}"
-            - name: COMMAND_SERVICE_HOST
-              value: "{{ .Values.container.dns.order }}.default.svc.cluster.local:{{ .Values.service.orderPort }}"
+            - name: PAYMENT_SERVICE_HOST
+              value: "{{ .Values.container.dns.inventory }}.default.svc.cluster.local:{{ .Values.service.orderPort }}"

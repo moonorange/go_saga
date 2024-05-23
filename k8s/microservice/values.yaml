@@ -12,7 +12,7 @@ container:
     pullPolicy: IfNotPresent
   dns:
     payment: payment-service
-    order: order-service
+    inventory: inventory-service
 
 service:
   type: ClusterIP

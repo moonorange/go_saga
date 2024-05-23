@@ -15,10 +15,10 @@ var (
 )
 
 func NewQueryServiceClient() genconnect.TaskServiceClient {
-	queryHost := os.Getenv("QUERY_SERVICE_HOST")
+	queryHost := os.Getenv("INVENTORY_SERVICE_HOST")
 	logrus.Info("queryHost: ", queryHost)
 	if queryHost == "" {
-		logrus.Fatal("empty QUERY_SERVICE_HOST")
+		logrus.Fatal("empty INVENTORY_SERVICE_HOST")
 	}
 	// Set up a connection to the server.
 	// Create a gRPC client using the connect.WithGRPC() option
@@ -35,10 +35,10 @@ func NewQueryServiceClient() genconnect.TaskServiceClient {
 }
 
 func NewCommandServiceClient() genconnect.TaskServiceClient {
-	commandHost := os.Getenv("COMMAND_SERVICE_HOST")
+	commandHost := os.Getenv("PAYMENT_SERVICE_HOST")
 	logrus.Info("commandHost: ", commandHost)
 	if commandHost == "" {
-		logrus.Fatal("empty COMMAND_SERVICE_HOST")
+		logrus.Fatal("empty PAYMENT_SERVICE_HOST")
 	}
 	if commandClient != nil {
 		return commandClient
