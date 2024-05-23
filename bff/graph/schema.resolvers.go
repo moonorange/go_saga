@@ -18,19 +18,19 @@ import (
 )
 
 var (
-	queryClient   genconnect.TaskServiceClient
-	commandClient genconnect.TaskServiceClient
+	inventoryClient genconnect.TaskServiceClient
+	paymentClient   genconnect.TaskServiceClient
 )
 
 func init() {
-	queryClient = client.NewQueryServiceClient()
-	commandClient = client.NewCommandServiceClient()
+	inventoryClient = client.NewQueryServiceClient()
+	paymentClient = client.NewCommandServiceClient()
 }
 
 // CreateTask is the resolver for the createTask field.
 func (r *mutationResolver) CreateTask(ctx context.Context, input model.NewTask) (*model.Task, error) {
 	// Access to command service
-	res, err := commandClient.CreateTask(ctx, connect.NewRequest(&gen.CreateTaskRequest{
+	res, err := paymentClient.CreateTask(ctx, connect.NewRequest(&gen.CreateTaskRequest{
 		Text: "task1",
 		Tags: []string{"tag1"},
 	}))
@@ -47,7 +47,7 @@ func (r *mutationResolver) CreateTask(ctx context.Context, input model.NewTask) 
 // GetTask is the resolver for the getTask field.
 func (r *queryResolver) GetTask(ctx context.Context, id string) (*model.Task, error) {
 	// Access to query service
-	res, err := queryClient.GetTask(ctx, connect.NewRequest(&gen.GetTaskRequest{
+	res, err := inventoryClient.GetTask(ctx, connect.NewRequest(&gen.GetTaskRequest{
 		TaskId: "1",
 	}))
 	if err != nil {
@@ -62,7 +62,7 @@ func (r *queryResolver) GetTask(ctx context.Context, id string) (*model.Task, er
 // GetTasksByTag is the resolver for the getTasksByTag field.
 func (r *queryResolver) GetTasksByTag(ctx context.Context, tag string) ([]*model.Task, error) {
 	// Access to query service
-	res, err := queryClient.ListTasksByTag(ctx, connect.NewRequest(&gen.ListTasksByTagRequest{
+	res, err := inventoryClient.ListTasksByTag(ctx, connect.NewRequest(&gen.ListTasksByTagRequest{
 		TagName: "tag1",
 	}))
 	if err != nil {

@@ -10,8 +10,8 @@ import (
 )
 
 var (
-	queryClient   genconnect.TaskServiceClient
-	commandClient genconnect.TaskServiceClient
+	inventoryClient genconnect.TaskServiceClient
+	paymentClient   genconnect.TaskServiceClient
 )
 
 func NewQueryServiceClient() genconnect.TaskServiceClient {
@@ -22,16 +22,16 @@ func NewQueryServiceClient() genconnect.TaskServiceClient {
 	}
 	// Set up a connection to the server.
 	// Create a gRPC client using the connect.WithGRPC() option
-	if queryClient != nil {
-		return queryClient
+	if inventoryClient != nil {
+		return inventoryClient
 	}
-	queryClient = genconnect.NewTaskServiceClient(
+	inventoryClient = genconnect.NewTaskServiceClient(
 		http.DefaultClient,
 		"http://"+inventoryHost,
 		connect.WithGRPC(),
 	)
 
-	return queryClient
+	return inventoryClient
 }
 
 func NewCommandServiceClient() genconnect.TaskServiceClient {
@@ -40,16 +40,16 @@ func NewCommandServiceClient() genconnect.TaskServiceClient {
 	if paymentHost == "" {
 		logrus.Fatal("empty PAYMENT_SERVICE_HOST")
 	}
-	if commandClient != nil {
-		return commandClient
+	if paymentClient != nil {
+		return paymentClient
 	}
 	// Set up a connection to the server.
 	// Create a gRPC client using the connect.WithGRPC() option
-	commandClient = genconnect.NewTaskServiceClient(
+	paymentClient = genconnect.NewTaskServiceClient(
 		http.DefaultClient,
 		"http://"+paymentHost,
 		connect.WithGRPC(),
 	)
 
-	return commandClient
+	return paymentClient
 }
